@@ -1,0 +1,103 @@
+/**
+* Webkul Software.
+*
+* @category  Webkul
+* @package   Webkul_EventManager
+* @author    Webkul
+* @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+* @license   https://store.webkul.com/license.html
+*/
+#wk_eventHeader span 
+{
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 6px;
+    text-align: center;
+}
+.wk_select_option
+{
+   display: inline-block;
+   width: 60%;
+}
+.select_style
+{
+    margin: 2px 0px;
+    max-width: 500px;
+}
+#grouoEventsLabel {
+    color: black;
+    font-weight: 600;
+    display: inline-block;
+    width: 235px;
+}
+.wk-eventTitle {
+   padding: 7px;
+   display: block;
+   color: white;
+   margin-bottom: 3px;
+}
+.event_content {
+   padding: 7px;
+   background-color: white;
+}
+.wk-events-header {
+    display: inline-block;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    box-shadow: 0px 0px 5px 2px grey inset;
+    padding: 3px 61px;
+}
+.wk_G_event_container {
+    padding: 7px;
+    box-shadow: 0px 0px 9px 2px grey inset;
+}
+.wk-event-category-container {
+    overflow: auto;
+}
+.wk_g_event_grid {
+    width: 96%;
+    box-shadow: 0px 0px 2px 2px grey;
+    margin: 10px;
+    padding: 6px;
+}
+.wk_G_event_container {
+    padding: 7px;
+}
+.wk-category-container {
+    padding: 4px;
+}
+.wk-eventGroup-name {
+    display: inline-block;
+    padding: 3px;
+    margin: 2px;
+}
+.wk-eventGroup-name a {
+    color:black;
+    text-transform: uppercase;
+}
+.wk-header_cont {
+    text-align: center;
+}
+.wk_events_gride_view {
+    box-shadow: 0px 0px 1px 1px grey;
+    padding: 2px;
+    position: relative;
+    background-color: #f2f2f2;
+}
+.wk_G_eventName {
+    background-color: teal;
+    color: white;
+    padding: 7px;
+}
+.wk_G_event_content {
+    padding: 5px 0;
+}
+button.wk_today {
+    cursor: pointer;
+    margin-top: 5px;
+}
+.wk-event-link{
+    padding: 0 !important;
+    font-size: 13px !important;
+}

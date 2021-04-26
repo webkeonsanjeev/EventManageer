@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_EventManager
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">new_groupevent_form.groupevent_form_data_source</item>
+            <item name="deps" xsi:type="string">new_groupevent_form.groupevent_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Group Event</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+            <item name="navContainerName" xsi:type="string">left</item>
+        </item>
+        <!--
+        *
+        *Form button is created 
+        *
+        -->
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="array">
+                <item name="name" xsi:type="string">back</item>
+                <item name="label" xsi:type="string" translate="true">Back</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/groupeventpage</item>
+            </item>
+            <item name="reset" xsi:type="string">Webkul\EventManager\Block\Adminhtml\GroupEvent\ResetButton</item>
+            <item name="save" xsi:type="array">
+                <item name="name" xsi:type="string">save</item>
+                <item name="label" xsi:type="string" translate="true">Save</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/save</item>
+            </item> 
+            <item name="delete" xsi:type="string">Webkul\EventManager\Block\Adminhtml\GroupEvent\DeleteButton</item>
+        </item>
+    </argument>
+    <!--
+    *
+    *Data Provider
+    *
+    -->
+    <dataSource name="groupevent_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Webkul\EventManager\Model\GroupEvent\DataProvider</argument>
+            <argument name="name" xsi:type="string">groupevent_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">group_event_id</argument>
+            <argument name="requestFieldName" xsi:type="string">group_event_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="eventmanager/groupevent/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <!--
+    *
+    *Form Element
+    *
+    -->
+    <fieldset name="GroupEvent">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Group Event Info</item>
+            </item>
+        </argument>
+        <field name="group_event_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">GroupEvent</item>
+                    <item name="dataScope" xsi:type="string">group_event_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="group_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Group Event Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">GroupEvent</item>
+                    <item name="dataScope" xsi:type="string">group_name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+         <!--
+         *
+         *Here events and show_on_page fields are created using modifiers
+         *
+         -->
+        <field name="store_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="label" xsi:type="string" translate="true">Store View</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">block</item>
+                    <item name="dataScope" xsi:type="string">store_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="notice" xsi:type="string" translate="true">"All store views" is default value, 
+                        If you select it with other option default value will be used. 
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="event_status">
+            <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">Webkul\EventManager\Model\Config\Source</item>
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Group Event Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">GroupEvent</item>
+                    <item name="dataScope" xsi:type="string">event_status</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="sortOrder" xsi:type="string">200</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
+        

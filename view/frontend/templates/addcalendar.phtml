@@ -1,0 +1,299 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_EventManager
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+if($customerSession->isLoggedIn()) {
+	
+
+$cid = $customerSession->$getCustomer->getId();
+echo "CID=".$cid;
+$groupId = $customerSession->$getCustomer->getGroupId();
+echo " Final groupId=".$groupId;
+
+/*
+$resource = Mage::getSingleton('core/resource'); 
+$readConnection = $resource->getConnection('core_read'); 
+//$query = "SELECT profile_id,created_at FROM " . $resource->getTableName('sales_recurring_profile')." where customer_id='".$cid."' and (state='active' OR state='canceled' OR state='suspended') order by profile_id desc limit 0,1";
+$query = "SELECT profile_id,created_at FROM " . $resource->getTableName('sales_recurring_profile')." where customer_id='".$cid."' and state='active' order by profile_id desc limit 0,1";
+$results = $readConnection->fetchAll($query);
+if(count($results)==0 && $groupId!=4){
+//echo "You have not permission to acces this page";
+Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('subscribe/subscribe-product.html'));
+	}else{
+foreach($results as $result)		{
+$created_at=$result['created_at'];
+$profile_id=$result['profile_id'];
+}
+$osql = "SELECT * FROM " . $resource->getTableName('sales_recurring_profile_order')." where profile_id='".$profile_id."' order by link_id desc limit 0,1 ";
+$oresults = $readConnection->fetchAll($osql);
+foreach($oresults as $oresult)		{
+$entity_id=$oresult['order_id'];
+}
+
+$sfogq = "SELECT * FROM " . $resource->getTableName('sales_flat_order_grid')." where entity_id='".$entity_id."' and status='processing' and customer_id='".$cid."' ";
+$sfogresult = $readConnection->fetchAll($sfogq);
+foreach($sfogresult as $sfog)		{
+$lo_created_at=$sfog['created_at'];
+}
+$endcount=1;
+$pdate=date('Y-m-d', strtotime('+'.$endcount.' month',strtotime($lo_created_at)));
+if((strtotime(date('Y-m-d'))<=strtotime($pdate)) || ($groupId==4)  ){	*/
+
+if($groupId==4){	
+?>
+
+<?php
+if ($block->getConfiSetting()) {
+    $groupId = $block->groupEventId();
+    $eventId = $block->eventId();
+    $textColorCode = $block->getTextColorCode();
+    $colorCode = $block->getColorCode();
+    if (!$block->getGroupEventIds()) {
+        echo $block->escapeHtml(__("Sorry, there is no event to show you."));
+    } else {
+         $check = 1;
+        if ($groupId) {
+            if (!$block->returnEnableGroupEvents($groupId)) {
+                echo $block->escapeHtml(__("This Group Event die or Disable."));
+                $check = 0;
+            }
+        }
+        if ($check == 1) {
+            ?>
+<link rel="stylesheet" type="text/css" 
+href="<?= $block->escapeUrl($block->getViewFileUrl('Webkul_EventManager/css/wk-custom.css')); ?>" >
+<link rel="stylesheet" type="text/css" 
+href="<?= $block->escapeUrl($block->getViewFileUrl('Webkul_EventManager/css/addCalendar.css')); ?>" >
+<link rel="stylesheet" type="text/css" 
+href="<?= $block->escapeUrl($block->getViewFileUrl('Webkul_EventManager/css/calendar.css')); ?>"/>
+<link rel="stylesheet" type="text/css" 
+href="<?= $block->escapeUrl($block->getViewFileUrl('Webkul_EventManager/css/custom.css')); ?>"/>
+<div style="max-width:<?= $block->escapeHtmlAttr($block->getConfigEventCalendarWidth()).'px;';?>
+            padding: 7px 10px 0px; box-shadow: 0px 0px 15px 4px grey;margin-bottom:10px" >
+    <div id="eventCalender">
+        <div id="wk_addCalendar_container">
+            <div id="wk_eventHeader" style="font-weight: 600;font-size: 20px;padding:6px;text-align: center;">
+                <span id="wk_headTitle"><?= $block->escapeHtml(__("EVENT CALENDAR")); ?></span>
+            </div>
+            <div id = "wk_option">
+               <?php
+                   $data = $block->getgroupEvents();
+                if (count($data)>0) {
+                    ?>
+                    <div>
+                        <div><span  id = "grouoEventsLabel">
+                        <?= $block->escapeHtml(__("Choose Events Category :")); ?> </span>
+                        <select class="wk_select select_style" id="wk-event-group-select" name="groupEvent" >
+                    <?php
+                    if ($block->isHomePage()) {
+                        ?>
+                                <option 
+                                    value="<?= $block->escapeUrl($block->getUrl('cms/index/index'))?>#eventCalender"
+                                > 
+                                 <?= $block->escapeHtml(__("Select Event Category")) ?>
+                                </option>
+                             <?php
+                                foreach ($data as $value) {
+                                    ?>
+                                    <option 
+                                        value='<?=
+                                                $block->escapeUrl($block->getUrl(
+                                                    'cms/index/index',
+                                                    ['_current'=>false]
+                                                )).'?id='.$block->escapeUrl($value['group_event_id'])
+                                                ?>#eventCalender' 
+                                                <?=$groupId ==
+                                                $value['group_event_id']? 'selected':'';?> 
+                                    >
+                                        <?= $block->escapeHtml($block->asHtml(ucfirst($value['group_name']))); ?>
+                                    </option>;
+                                    <?php
+                                }
+                    } else {
+                        ?>
+                                <option 
+                                    value="<?= $block->escapeUrl($block->getCmsPageUrl())."/#eventCalender" ?>"
+                                > 
+                            <?= $block->escapeHtml(__("Select Event Category")) ?>
+                                </option>
+                                <?php
+                                foreach ($data as $value) {
+                                    $url = $block->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+                                    $index = strpos($url, "?");
+                                    $url = substr($url, 0, $index);
+                                    ?>
+                                    <option value='
+                                    <?= $block->escapeUrl($url."?id=".$value["group_event_id"]) ?>
+                                    #eventCalender' <?= $block->escapeUrl($groupId ==
+                                    $value["group_event_id"])? "selected" : "" ?> >
+                                        <?= $block->escapeUrl($block->asHtml(ucfirst($value['group_name']))); ?>
+                                    </option>
+                                    <?php
+                                }
+                    }
+                    ?> 
+                        </select>
+                    </div>
+                            <?php
+                }
+                ?>
+                    <?php if ($block->getEventsData()) { ?>
+                    <div><span  id = "grouoEventsLabel"><?= $block->escapeHtml(__("Choose Event :")); ?> </span>
+                        <select class="select_style wk_select2" id="wk-event-redirect">
+                            <option disabled selected><?= $block->escapeHtml(__("Select Event"))?></option>
+                            <?php
+                            foreach ($block->getEventsArray($groupId) as $value) {
+                                echo $block->escapeUrl($url = $block->getUrl(
+                                    '*/*/*',
+                                    ['_current' => true, '_use_rewrite' => true]
+                                ));
+                                ?>
+                                <option 
+                                value='<?= $block->escapeUrl($url."&&eventId=".$value["event_id"]) ?>#eventCalender'
+                                <?=$eventId == $value["event_id"]? "selected" : "" ?> >
+                                <?= $block->escapeUrl($value["event_name"])?>
+                                </option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <button class="wk_today"><?= $block->escapeHtml(__("Go Today"))?></button>
+                <?php  } ?>
+            </div>
+        </div>
+    </div>
+</div>
+            <?php
+            $date = '';
+            $monthName = '';
+            $date = $block->getEventData($eventId);
+            $data = $block->jsonEncode($block->getEventsData());
+            $events = [
+            'date' => $date,
+            'groupId' => $groupId
+            ]
+            ?>
+
+<script>
+    window.eventData = <?= \Zend_Json::encode($events); ?>;
+</script>
+    <!--
+        here calendar layout code
+    -->
+    <div class="wk-event-container">    
+        <section class="main">
+            <div class="custom-calendar-wrap" style="padding: 3px;box-shadow: 0px 0px 7px 2px grey;">
+                <div id="custom-inner" class="custom-inner">
+                    <div class="custom-header clearfix">
+                        <nav>
+                            <span id="custom-prev" class="custom-prev"></span>
+                            <span id="custom-next" class="custom-next"></span>
+                        </nav>
+                        <h2 id="custom-month" class="custom-month"></h2>
+                        <h3 id="custom-year" class="custom-year"></h3>
+                    </div>
+                    <div id="calendar" class="fc-calendar-container" 
+                    style="max-height:<?= $block->escapeHtmlAttr($block->getConfigEventCalendarHeight()).'px' ?>;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+            "Webkul_EventManager/js/addcalendar":{
+                "data":<?= /* @noEscape */ $data?>,
+                "transEndEventNames": {
+                                            "WebkitTransition" : "webkitTransitionEnd",
+                                            "MozTransition" : "transitionend",
+                                            "OTransition" : "oTransitionEnd",
+                                            "msTransition" : "MSTransitionEnd",
+                                            "transition" : "transitionend"
+                                      },
+                "data2": { "eventsShowType" : "<?= $block->escapeJs($block->getConfigEventViewType())
+                ?>" }                    
+            }
+    }
+}
+</script>
+<?php }
+    }
+}
+?>
+
+<?php
+if ($block->getConfiSetting()) {
+    ?>
+ <style type= "text/css" >
+.fc-calendar .fc-row > div.fc-content:hover:after{ 
+    color: <?= $block->escapeHtml($colorCode) ?>;
+}
+.tooltip:hover::before {
+    background: <?= $block->escapeHtml($colorCode) ?> none repeat scroll 0 0;
+}
+.fc-calendar .fc-row > div.fc-today {
+    background: <?= $block->escapeHtml($colorCode) ?>;
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,0.1);
+}
+.fc-calendar .fc-head {
+    background: <?= $block->escapeHtml($textColorCode) ?>;
+    color: <?= $block->escapeHtml($colorCode) ?>;
+}
+.custom-content-reveal a {
+    color: <?= $block->escapeHtml($colorCode) ?>;
+}
+.custom-content-reveal span.custom-content-close:after {
+    color: <?= $block->escapeHtml($textColorCode) ?>;
+}
+.custom-content-reveal span.custom-content-close {
+    background: <?= $block->escapeHtml($colorCode) ?>;
+}
+.custom-header nav span:before {
+    background: <?= $block->escapeHtml($textColorCode) ?>;
+    color: <?= $block->escapeHtml($colorCode) ?>;
+}
+.custom-header {
+    border-top: 2px solid <?= $block->escapeHtml($colorCode) ?>;
+    border-bottom: 1px solid <?= $block->escapeHtml($colorCode) ?>;
+}
+.wk-eventTitle {
+    color: <?= $block->escapeHtml($textColorCode) ?>;
+    background-color: <?= $block->escapeHtml($colorCode) ?>;
+}
+
+.custom-content-reveal .wk-event-link{
+    color: <?= $block->escapeHtml($textColorCode) ?>;
+}
+.fc-calendar .fc-row > div.fc-today > span.fc-date{
+    color: <?= $block->escapeHtml($textColorCode);?>;
+}
+</style>
+<?php } ?>
+
+<?php
+}else{
+$redirect->setRedirect($storeManager->getStore()->getBaseUrl().'catalog/product/view/id/63/s/subscribe-product/');
+	}
+}
+ }else{	 
+
+$redirect->setRedirect($storeManager->getStore()->getBaseUrl().'customer/account/login');
+ }
+ ?>
