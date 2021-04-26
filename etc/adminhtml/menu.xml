@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_EventManager
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Webkul_EventManager::EventManager" title="Event Manager" module="Webkul_EventManager" sortOrder="20" resource="Webkul_EventManager::EventManager"/>
+		<add id="Webkul_EventManager::AddEvent" title="Event" module="Webkul_EventManager" action="eventmanager/event/eventpage" sortOrder="1" parent="Webkul_EventManager::EventManager" resource="Webkul_EventManager::AddEvent"/>
+		<add id="Webkul_EventManager::AddEventGroup" title="Event Group" action="eventmanager/groupevent/groupeventpage" module="Webkul_EventManager" sortOrder="2" parent="Webkul_EventManager::EventManager" resource="Webkul_EventManager::AddEventGroup"/>
+	</menu>
+</config>
+

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_EventManager
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+   <!--**
+   * For webkul_events_data.xml
+   *-->
+     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="webkul_GroupEvent_data_data_source" xsi:type="string">Webkul\EventManager\Model\ResourceModel\GroupEvent\Grid\Collection</item>
+                <item name="webkul_events_data_data_source" xsi:type="string">Webkul\EventManager\Model\ResourceModel\Event\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Webkul\EventManager\Model\ResourceModel\Event\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">webkul_eventmanager_events</argument>
+            <argument name="eventPrefix" xsi:type="string">webkul_eventmanager_event_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">event_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\EventManager\Model\ResourceModel\Event</argument>
+        </arguments>
+    </type>
+    <virtualType name="WebkulEventManagerEventGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\EventManager\Model\ResourceModel\Event\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">WebkulEventManagerEventGridDataProvider</argument>
+        </arguments>
+    </virtualType>
+    <!--**
+    * Start webkul_group events_data.xml
+    *-->
+    <type name="Webkul\EventManager\Model\ResourceModel\GroupEvent\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">webkul_eventmanager_groupevents</argument>
+            <argument name="eventPrefix" xsi:type="string">webkul_eventmanager_GroupEvent_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">GroupEvent_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\EventManager\Model\ResourceModel\GroupEvent</argument>
+        </arguments>
+    </type>
+	
+	
+	
+	
+	<type name="Webkul\EventManager\Model\ImageUploader">
+    <arguments>
+        <!-- Temporary file stored in pub/media/faq/tmp/icon -->
+        <argument name="baseTmpPath" xsi:type="string">event/tmp/pdf</argument>
+        <argument name="basePath" xsi:type="string">event/tmp/pdf</argument>
+        <argument name="allowedExtensions" xsi:type="array">
+            <item name="jpg" xsi:type="string">jpg</item>
+            <item name="jpeg" xsi:type="string">jpeg</item>
+            <item name="gif" xsi:type="string">gif</item>
+            <item name="png" xsi:type="string">png</item>
+			<item name="pdf" xsi:type="string">pdf</item>
+        </argument>
+    </arguments>
+</type>
+	
+	
+	
+    <virtualType name="WebkulEventManagerGroupEventGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\EventManager\Model\ResourceModel\GroupEvent\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">WebkulEventManagerGroupEventGridDataProvider</argument>
+        </arguments>
+    </virtualType>
+</config>

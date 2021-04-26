@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_EventManager
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="webkul" translate="label" sortOrder="10">
+            <label>webkul</label>
+        </tab>
+        <section id="GroupEvent" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Event Manager</label>
+            <tab>webkul</tab>
+            <resource>Webkul_EventManager::config_event</resource>
+            <group id="GroupEventSetting" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Group Event Setting</label>
+                <field id="status" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Group Events Status</label>
+                    <source_model>Webkul\EventManager\Model\Config\Source</source_model>
+                     <comment>Status 'Enable' make group event manager show on frontend (enable) else disable.</comment>
+                </field>
+                <field id="event_view_type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Group Events Visibility</label>
+                    <source_model>Webkul\EventManager\Model\Config\VisibilitySource</source_model>
+                     <comment>Option to choose all events show or only future events</comment>
+                </field>
+                <field id="event_calendar_width" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Group Events Calendar Width</label>
+                    <comment>Put value to set frontend calendar width eg. 400 (should be greater or equal 320)</comment>
+                </field>
+                <field id="event_calendar_height" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Group Events Calendar Height</label>
+                    <comment>Put value to set frontend calendar height eg. 400 (should be greater or equal 220)</comment>
+                </field>
+                <field id="event_calendar_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Group Events Calendar Color</label>
+                    <comment><![CDATA[Background color]]></comment>
+                    <frontend_model>Webkul\EventManager\Block\Colorpicker</frontend_model>
+                </field>
+                <field id="event_calendar_text_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Group Events Calendar Text Color</label>
+                    <comment><![CDATA[Text color]]></comment>
+                    <frontend_model>Webkul\EventManager\Block\Colorpicker</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

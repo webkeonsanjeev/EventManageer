@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_EventManager
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="webkul_eventmanager_events" resource="default" engine="innodb" comment="Webkul Event Manager Events">
+        <column xsi:type="int" name="event_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Event Id"/>
+        <column xsi:type="text" name="event_name" nullable="true" comment="event name"/>
+        <column xsi:type="date" name="event_date" nullable="true" comment="event date"/>
+        <column xsi:type="text" name="event_content" nullable="true" comment="event content"/>
+        <column xsi:type="text" name="event_link" comment="Allowed Categories Ids"/>
+		<column xsi:type="text" name="event_gympdf" nullable="true" comment="event gympdf"/>
+		<column xsi:type="text" name="event_homepdf" nullable="true" comment="event homepdf"/>
+        <column xsi:type="int" name="event_status" nullable="true" comment="event status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="event_id"/>
+        </constraint>
+    </table>
+    <table name="webkul_eventmanager_groupevents" resource="default" engine="innodb" comment="Webkul Event Manager Group Events">
+        <column xsi:type="int" name="group_event_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Group Event Id"/>
+        <column xsi:type="text" name="group_title" nullable="true" comment="Group Title"/>
+        <column xsi:type="text" name="group_name" nullable="true" comment="Group Name"/>
+        <column xsi:type="text" name="group_code" nullable="true" comment="Group Code"/>
+        <column xsi:type="text" name="show_on_page" nullable="true" comment="Show On Page"/>
+        <column xsi:type="text" name="store_id" nullable="true" comment="Store Id"/>
+        <column xsi:type="int" name="event_status" nullable="true" comment="event status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="group_event_id"/>
+        </constraint>
+    </table>
+    <table name="webkul_eventmanager_maptable" resource="default" engine="innodb" comment="Webkul Event Manager Map Table">
+        <column xsi:type="int" name="map_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Map Id"/>
+        <column xsi:type="int" name="group_event_id" padding="10" unsigned="true" nullable="false" comment="Group Event Id"/>
+        <column xsi:type="int" name="event_id" padding="10" unsigned="true" nullable="false" comment="Group Event Id"/>
+        <constraint xsi:type="foreign" referenceId="group_event_id" table="webkul_eventmanager_maptable" column="group_event_id" referenceTable="webkul_eventmanager_groupevents" referenceColumn="group_event_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="webkul_eventmanager_maptable_id" table="webkul_eventmanager_maptable" column="event_id" referenceTable="webkul_eventmanager_events" referenceColumn="event_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="map_id"/>
+        </constraint>
+    </table>
+</schema>
