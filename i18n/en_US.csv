@@ -1,0 +1,79 @@
+"View Details","View Details"
+Delete,Delete
+Reset,Reset
+"Event info","Workout info"
+"New Event Form","New Workout Form"
+"successfully deleted","successfully deleted"
+"Data not Deleted , some error happen","Data not Deleted , some error happen"
+Events,Workouts
+"Event data Successfully Upadated","Workout data Successfully Upadated"
+"Event has been successfully saved","Workout has been successfully saved"
+"Event has not been successfully saved.","Workout has not been successfully saved."
+"The event date should be declared for the current date or future date.","The workout date should be declared for the current date or future date."
+"Some error occure please retry","Some error occure please retry"
+"Group Event info","Group Workout info"
+"New Group Event","New Group Workout"
+"Group Events","Group Workouts"
+"Successfully Status Changed","Successfully Status Changed"
+"Status Not Changed","Status Not Changed"
+"Group Event data Successfully Upadated","Group Workout data Successfully Upadated"
+"Group Event data Successfully Save","Group Workout data Successfully Save"
+"Something went wrong","Something went wrong"
+Enable,Enable
+Disable,Disable
+"All Events","All Workouts"
+"Only Future Events","Only Future Workouts"
+"Add Pages on show","Add Pages on show"
+Edit,Edit
+"Delete ""${ $.$data.event_name}""","Delete ""${ $.$data.event_name}"""
+"Are you sure you want to delete a ""${ $.$data.event_name }"" record?","Are you sure you want to delete a ""${ $.$data.event_name }"" record?"
+"Delete ""${ $.$data.group_name }""","Delete ""${ $.$data.group_name }"""
+"Are you sure you want to delete a ""${ $.$data.group_name }"" record?","Are you sure you want to delete a ""${ $.$data.group_name }"" record?"
+"<b>Sorry,</b> there is no event to show you.","<b>Sorry,</b> there is no event to show you."
+"This Group Event die or Disable.","This Group Workout die or Disable."
+"EVENT CALENDAR","WORKOUT CALENDAR"
+"Choose Events Category :","Choose WorkoutS Category :"
+All,All
+"Choose Event :","Choose Workout :"
+"Go Today","Go Today"
+webkul,webkul
+"Event Manager","Workout Manager"
+"Group Event Setting","Group Workout Setting"
+"Group Events Status","Group WorkoutS Status"
+"Group Events Visibility","Group WorkoutS Visibility"
+"Group Events Calendar Width","Group WorkoutS Calendar Width"
+"Group Events Calendar Height","Group WorkoutS Calendar Height"
+"Group Events Calendar Color","Group WorkoutS Calendar Color"
+Event,Workout
+Back,Back
+Save,Save
+"Event Info","Workout Info"
+"Event Name","Workout Name"
+"Details Link","Details Link"
+"Event Date","Workout Date"
+"Event Content","Workout Content.PDF"
+"Event Status","Workout Status"
+"Group Event","Group Workout"
+"Group Event Info","Group Workout Info"
+"Group Event Name","Group Workout Name"
+"Store View","Store View"
+"""All store views"" is default value, 
+                        If you select it with other option default value will be used. 
+                    ","""All store views"" is default value, 
+                        If you select it with other option default value will be used. 
+                    "
+"Group Event Status","Group Workout Status"
+"Add New Event","Add New Workout"
+"Delete items","Delete items"
+"Are you sure to delete selected events?","Are you sure to delete selected workouts?"
+"Change status","Change status"
+"Event Id","Workout Id"
+Status,Status
+"Add New Group Event","Add New Group Workout"
+delete,delete
+"Group Event Id","Group Workout Id"
+"Event ID","Workout ID"
+"Pages on show","Pages on show"
+"Store Ids","Store Ids"
+Event Group,Workout Group
+Group Events Calendar Text Color,Group Workout Calendar Text Color
