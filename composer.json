@@ -1,0 +1,23 @@
+{
+    "name": "webkul/event-manager",
+    "description": "magento2 event manager",
+    "require": {
+        "magento/module-config": "101.1.*",
+        "magento/module-eav": "102.0.*",
+        "magento/framework": "102.0.*",
+        "magento/module-ui": "101.1.*"
+    },
+    "type": "magento2-module",
+    "version": "3.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Webkul\\EventManager\\": ""
+        }
+    }
+}

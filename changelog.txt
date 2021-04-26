@@ -1,0 +1,49 @@
+Legend 
+
+  
++ Features 
+
+- Bugs 
+-------------------------------- Version 3.0.0 -------------------------------------- 
+
++ Version updated for magento 2.3.x
+
+-------------------------------- Version 2.0.2 -------------------------------------- 
+
++ Install through Composer functionality added.
+
++ According to Magento 2.2.*.
+
+-------------------------------- Version 2.0.1 -------------------------------------- 
+
++ Admin can set Option to show all events or only future events in calendar UI in frontend.
+
++ Admin can set width of events calendar layout at frontend from configuration.
+
+- Remove some extra fields form "Group Events" grid.
+
+- Remove some extra fields from "Add Group Event" form.
+
+
+-------------------------------- Version 2.0.0 -------------------------------------- 
+
++ Admin can add events.
+
++ Admin can create Group Events. 
+
++ Admin can assign(add) events in group event. 
+
++ Admin can add group event on cms pages.
+
++ Admin can manage events that are shown on cms pages.
+
++ Admin can disable/enable individual events and also group events.
+
++ Admin able to enable/disable events to show on pages.
+
++ Events are visible in frontend with calendar UI.
+
++ Module also facilitate the User to view events according to group events that are set on the cms page by Admin.
+
++ it support multiple events on same day.
+
