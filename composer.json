@@ -1,6 +1,6 @@
 {
     "name": "webkul/event-manager",
-    "description": "magento2 event manager",
+    "description": "magento2 event manager sandeep",
     "require": {
         "magento/module-config": "101.1.*",
         "magento/module-eav": "102.0.*",
